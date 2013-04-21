@@ -39,11 +39,13 @@
           </span>
         </div>
       </g:form>
+      <g:form action="register" method="post" >
       <div class="buttons">
         <span class="button">
-          <input class="new" type="button" value="Register" />
+          <input class="new" type="submit" value="Register" />
         </span>
       </div>
+      </g:form>
     </div>
   </body>
 </html>
