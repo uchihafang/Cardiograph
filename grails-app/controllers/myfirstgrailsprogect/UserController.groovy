@@ -33,21 +33,29 @@ class UserController {
 	def register = {}
 	
 	def adduser = {
+		boolean err = false
 		if(params.user == "" || params.pass1 == "") 
 		{
 			flash.message = "Empty fild."
+			err = true	
+		} 
+		if(params.pass1 != params.pass2) {
+			flash.message = "Passwords are different! Try again."
+			err = true
+		}
+		if(User.findByLogin(params.login)) {
+			flash.message = "User already exist."
+			err = true
+		}
+		
+		if(!err) {
+			def user = new User()
+			user.login = params.login
+			user.password = params.pass1
+			user.name = params.name
+			user.save()
+			redirect(action:"login")
+		} else 
 			redirect(action:"register")
-		} else
-			if(params.pass1 == params.pass2) {
-				def user = new User()
-				user.login = params.login
-				user.password = params.pass1
-				user.name = params.name
-				user.save()
-				redirect(action:"login")
-			} else {
-				flash.message = "Passwords are different! Try again."
-				redirect(action:"register")
-			}
 	}
   }
