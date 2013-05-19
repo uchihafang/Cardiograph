@@ -4,11 +4,42 @@
     android:layout_height="match_parent" >
 
     <TextView
+        android:id="@+id/editView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="33dp"
         android:text="@string/hello_world"
         tools:context=".MainActivity" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="150dp"
+        android:onClick="onBtnStartClick"
+        android:text="Start" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStart"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:maxHeight="50dip"
+        android:maxWidth="1000dip" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="150dp"
+        android:onClick="onBtnStopClick"
+        android:text="Stop" />
 
 </RelativeLayout>
