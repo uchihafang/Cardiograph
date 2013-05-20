@@ -44,23 +44,18 @@ public class MainActivity extends Activity {
     	TextView text;
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Stoped");
-    	//microphoneRecoder.stopRecording();
-    	System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
-    	
-    	// Start lengthy operation in a background thread
-        new Thread(new Runnable() {
+    	microphoneRecoder.stopRecording();
+    	setProgresBar(0);
+    }
+    
+    public void setProgresBar(int value)
+    {
+    	mProgressStatus = value/10;
+    	// Update the progress bar
+        mHandler.post(new Runnable() {
             public void run() {
-                while (mProgressStatus < 100) {
-                    mProgressStatus++;
-
-                    // Update the progress bar
-                    mHandler.post(new Runnable() {
-                        public void run() {
-                            mProgress.setProgress(mProgressStatus);
-                        }
-                    });
-                }
+                mProgress.setProgress(mProgressStatus);
             }
-        }).start();
+        });
     }
 }

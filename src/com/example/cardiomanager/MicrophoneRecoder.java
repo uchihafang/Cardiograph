@@ -59,15 +59,15 @@ public class MicrophoneRecoder
 	private void writeAudioDataToFile() {
 	    // Write the output audio in byte
 
-	    String filePath = "/sdcard/voice8K16bitmono.pcm";
+	    //String filePath = "/sdcard/voice8K16bitmono.pcm";
 	    short sData[] = new short[BufferElements2Rec];
 
-	    FileOutputStream os = null;
+	    /*FileOutputStream os = null;
 	    try {
 	        os = new FileOutputStream(filePath);
 	    } catch (FileNotFoundException e) {
 	        e.printStackTrace();
-	    }
+	    }*/
 
 	    while (isRecording) {
 	        // gets the voice output from microphone to byte format
@@ -78,16 +78,18 @@ public class MicrophoneRecoder
 	            // // writes the data to file from buffer
 	            // // stores the voice buffer
 	            byte bData[] = short2byte(sData);
-	            os.write(bData, 0, BufferElements2Rec * BytesPerElement);
-	        } catch (IOException e) {
+	            
+	           // os.write(bData, 0, BufferElements2Rec * BytesPerElement);
+	            
+	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
 	    }
-	    try {
-	        os.close();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+//	    try {
+//	        os.close();
+//	    } catch (IOException e) {
+//	        e.printStackTrace();
+//	    }
 	}
 
 	public void stopRecording() {
