@@ -1,16 +1,22 @@
 package com.example.cardiomanager;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
 	MicrophoneRecoder microphoneRecoder;
 	
+	private ProgressBar mProgress;
+    private int mProgressStatus = 0;
+    private Handler mHandler = new Handler();
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +24,7 @@ public class MainActivity extends Activity {
         
         //creating clases
         microphoneRecoder = new MicrophoneRecoder();
+        mProgress = (ProgressBar) findViewById(R.id.progressBar);
     }
 
     @Override
@@ -37,6 +44,23 @@ public class MainActivity extends Activity {
     	TextView text;
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Stoped");
-    	microphoneRecoder.stopRecording();
+    	//microphoneRecoder.stopRecording();
+    	System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
+    	
+    	// Start lengthy operation in a background thread
+        new Thread(new Runnable() {
+            public void run() {
+                while (mProgressStatus < 100) {
+                    mProgressStatus++;
+
+                    // Update the progress bar
+                    mHandler.post(new Runnable() {
+                        public void run() {
+                            mProgress.setProgress(mProgressStatus);
+                        }
+                    });
+                }
+            }
+        }).start();
     }
 }
