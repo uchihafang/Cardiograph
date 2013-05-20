@@ -9,13 +9,15 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
+	MicrophoneRecoder microphoneRecoder;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
         //creating clases
-        MicrophoneRecoder recoder = new MicrophoneRecoder();
+        microphoneRecoder = new MicrophoneRecoder();
     }
 
     @Override
@@ -28,11 +30,13 @@ public class MainActivity extends Activity {
     	TextView text;
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Started");
+    	microphoneRecoder.startRecording();
     }
     
     public void onBtnStopClick(View view) {
     	TextView text;
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Stoped");
+    	microphoneRecoder.stopRecording();
     }
 }
