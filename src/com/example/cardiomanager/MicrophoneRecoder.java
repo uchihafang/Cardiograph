@@ -17,11 +17,14 @@ public class MicrophoneRecoder
 	private AudioRecord recorder = null;
 	private Thread recordingThread = null;
 	private boolean isRecording = false;
-	    
-	public MicrophoneRecoder()
+	private AudioFilter audioFilter;
+	
+	
+	public MicrophoneRecoder(AudioFilter aF)
 	{
 		int bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
-	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING); 
+	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
+		audioFilter = aF;
 	}
 	    
 	int BufferElements2Rec = 1024; // want to play 2048 (2K) since 2 bytes we use only 1024
@@ -78,8 +81,8 @@ public class MicrophoneRecoder
 	            // // writes the data to file from buffer
 	            // // stores the voice buffer
 	            byte bData[] = short2byte(sData);
-	            
-	           // os.write(bData, 0, BufferElements2Rec * BytesPerElement);
+	            audioFilter.setBuffer(bData);
+	            // os.write(bData, 0, BufferElements2Rec * BytesPerElement);
 	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
