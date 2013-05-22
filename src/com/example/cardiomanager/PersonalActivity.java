@@ -14,7 +14,7 @@ public class PersonalActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_personal, menu);
+        //getMenuInflater().inflate(R.menu.activity_personal, menu);
         return true;
     }
 }
