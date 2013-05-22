@@ -68,6 +68,11 @@ public class MainActivity extends Activity {
     	btn.setEnabled(true);
     }
     
+    public void onBtnUserNameClick(View view) {
+    	Intent intent = new Intent(MainActivity.this, PersonalActivity.class);
+        startActivity(intent);
+    }
+    
     public synchronized void setProgresBar(int value)
     {
     	mProgressStatus = (int)(value);///2.55);

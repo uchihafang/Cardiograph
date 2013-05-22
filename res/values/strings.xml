@@ -5,5 +5,8 @@
     <string name="title_activity_main">HardBeat</string>
     <string name="about_text">Cardiograph in faze of creating.</string>
     <string name="about_title">About</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_personal">Personal information</string>
+    <string name="btnUserNameText">UserName</string>
 
 </resources>
