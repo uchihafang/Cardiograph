@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
     }
     
     public void onBtnUserNameClick(View view) {
-    	Intent intent = new Intent(MainActivity.this, PersonalActivity.class);
+    	Intent intent = new Intent(MainActivity.this, UserListActivity.class);
         startActivity(intent);
     }
     

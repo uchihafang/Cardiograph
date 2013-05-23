@@ -21,6 +21,7 @@ public class DbSQLLite extends SQLiteOpenHelper {
 
 	public DbSQLLite(Context context) {
 	    super(context, DB_NAME, null, DB_VERSION);
+	    
 	  }
 
 	  @Override
