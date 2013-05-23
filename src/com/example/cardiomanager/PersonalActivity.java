@@ -49,7 +49,32 @@ public class PersonalActivity extends Activity {
         finally {
         	db.close();
 		}
-
-       
+    }
+    
+    private void getFromDataBase(int ID) {
+    	/*DbSQLLite dbSQLLite = new DbSQLLite(PersonalActivity.this);
+        SQLiteDatabase db = dbSQLLite.getReadableDatabase();
+        try {
+            ContentValues cv = new ContentValues();
+            cv.put(dbSQLLite.USERNAME ,edName.getText().toString());
+            cv.put(dbSQLLite.DATEBRTH ,edDate.getText().toString());
+            cv.put(dbSQLLite.HEIGHT ,edHeight.getText().toString());
+            cv.put(dbSQLLite.WEIGHT ,edInfo.getText().toString());
+            cv.put(dbSQLLite.DASEASES ,edName.getText().toString());
+            db.insert(dbSQLLite.TABLE_NAME,null,cv);
+		} 
+        finally {
+        	db.close();
+		}
+        
+        
+        String whereBatch = DbSQLLite.CONTACTS_ID_NAME + " = ?";
+        Cursor c = database.query(ContactsDBHelper.CONTACTS_TABLE_NAME, selectedColumns, whereBatch, new String[]{ Long.toString(id) }, null, null, ContactsDBHelper.CONTACTS_USER_NAME);            
+        Contact contact = null;
+        if(c.getCount() > 0)
+        {
+               c.moveToFirst();                                       
+               contact = cursorToContact(c);
+        }*/
     }
 }
