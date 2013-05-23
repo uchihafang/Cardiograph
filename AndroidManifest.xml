@@ -29,9 +29,19 @@
         <activity
             android:name=".PersonalActivity"
             android:label="@string/title_activity_personal" >
-            <!--  <intent-filter>
+
+            <!--
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".UserListActivity"
+            android:label="@string/title_activity_user_list" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.app.ListActivity" />
         </activity>
     </application>
 

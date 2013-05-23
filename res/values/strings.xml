@@ -8,5 +8,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_personal">Personal information</string>
     <string name="btnUserNameText">UserName</string>
+    <string name="title_activity_user_list">Users List</string>
 
 </resources>
