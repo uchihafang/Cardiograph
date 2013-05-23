@@ -4,24 +4,92 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:text="User Name:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+    
     <EditText
         android:id="@+id/edUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/textName"
         android:ems="10"
         android:inputType="textPersonName" >
 
         <requestFocus />
     </EditText>
+    
+	<TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ 		android:layout_below="@+id/edUserName"
+        android:text="Date of birth:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+    <EditText
+        android:id="@+id/editDateBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ 		android:layout_toRightOf="@+id/textDate"
+ 		android:layout_below="@+id/edUserName"
+        android:ems="10"
+        android:inputType="date" />
+
+	<TextView
+        android:id="@+id/textHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editDateBirth"
+        android:text="Height"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/edHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editDateBirth"
+        android:layout_toRightOf="@+id/textHeight"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edHeight"
+        android:text="Weight"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/edWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edHeight"
+        android:layout_toRightOf="@+id/textWeight"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edWeight"
+        android:layout_alignParentLeft="true"
+        android:text="Diseases"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/edInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edWeight"
+        android:layout_toRightOf="@+id/textInfo"
+        android:ems="10"
+        android:inputType="textMultiLine" />
 
 </RelativeLayout>
