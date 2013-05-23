@@ -32,7 +32,6 @@ public class MainActivity extends Activity {
         microphoneRecoder = new MicrophoneRecoder(audioFilter);
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         
-        
     }
 
     @Override

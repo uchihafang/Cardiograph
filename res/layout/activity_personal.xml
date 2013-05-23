@@ -91,5 +91,15 @@
         android:layout_toRightOf="@+id/textInfo"
         android:ems="10"
         android:inputType="textMultiLine" />
+    
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edInfo"
+        android:layout_margin="5dp"
+        android:onClick="onBtnDoneClick"
+        android:text="Save" />
+    
 
 </RelativeLayout>
