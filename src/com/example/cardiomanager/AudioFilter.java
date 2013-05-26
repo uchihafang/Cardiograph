@@ -4,7 +4,7 @@ import android.widget.Toast;
 
 public class AudioFilter {
 	
-	byte Data[];
+	short Data[];
 	LineGraph lineGraph;
 	
 	public AudioFilter(LineGraph graph) {
@@ -12,12 +12,18 @@ public class AudioFilter {
 			
 	}
 
-	public synchronized void setBuffer(byte bData[]) {
-		Data = bData;
-		lineGraph.addData(Data[1]);
+	public synchronized void setBuffer(short sData[]) {
+		Data = sData;
+		int S = 0;
+		for (int i = 10; i < 30; i++) {
+			S += Data[i];
+		}
+		S /= 30 - 10;
+		Math.abs(S);
+		lineGraph.addData(S);
 	}
 	
-	public synchronized byte[] getBuffer() {
+	public synchronized short[] getBuffer() {
 		// TODO
 		return Data;
 	}

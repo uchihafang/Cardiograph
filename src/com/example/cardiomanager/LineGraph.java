@@ -31,7 +31,7 @@ public class LineGraph {
 		renderer.setColor(Color.BLACK);
 		mRenderer.setBackgroundColor(Color.BLACK);
     	mRenderer.setAxesColor(Color.BLACK);
-    	mRenderer.setMarginsColor(Color.YELLOW);
+    	mRenderer.setMarginsColor(Color.WHITE);
     	mRenderer.setZoomButtonsVisible(true);
     	
     	mRenderer.addSeriesRenderer(renderer);
@@ -43,9 +43,9 @@ public class LineGraph {
     	return gView;
     }
 	
-	public void addData(int value)
+	public synchronized void addData(int value)
 	{
-		timeSeries.add(value, counter);
+		timeSeries.add(counter, value);
 		counter++;
 	}
 	

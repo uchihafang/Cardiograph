@@ -52,21 +52,22 @@ public class MainActivity extends Activity {
     	text.setText("Started");
     	microphoneRecoder.startRecording();
     	
-    	if(threadGraphUpdater != null)
-    		threadGraphUpdater.destroy();
-    	threadGraphUpdater = new Thread() {
-			public void run() {
-				while(true) {
-					try {
-						Thread.sleep(100);
-						gViewGraph.repaint();
-						
-					}catch(InterruptedException e){
-						
+    	/*if(threadGraphUpdater == null) {
+	    	threadGraphUpdater = new Thread() {
+				public void run() {
+					while(true) {
+						try {
+							Thread.sleep(100);
+							gViewGraph.repaint();
+							
+						}catch(InterruptedException e){
+							
+						}
 					}
 				}
-			}
-		};
+			};
+    	}
+    	threadGraphUpdater.start();*/
     	
     	Button btn = (Button)findViewById(R.id.btnStart);
     	btn.setEnabled(false);
@@ -80,10 +81,9 @@ public class MainActivity extends Activity {
     	text.setText("Stoped");
     	microphoneRecoder.stopRecording();
     	
-    	if(threadGraphUpdater.isAlive()) {
+    	/*if(threadGraphUpdater.isAlive()) {
 	    	threadGraphUpdater.stop();
-	    	threadGraphUpdater.destroy();
-    	}
+	    }*/
     	
     	Button btn = (Button)findViewById(R.id.btnStop);
     	btn.setEnabled(false);
