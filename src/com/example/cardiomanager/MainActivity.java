@@ -1,5 +1,7 @@
 package com.example.cardiomanager;
 
+import org.achartengine.GraphicalView;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.content.Intent;
@@ -7,6 +9,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -30,8 +33,13 @@ public class MainActivity extends Activity {
         //-creating classes-
         audioFilter = new AudioFilter(MainActivity.this);
         microphoneRecoder = new MicrophoneRecoder(audioFilter);
-        mProgress = (ProgressBar) findViewById(R.id.progressBar);
+        //mProgress = (ProgressBar) findViewById(R.id.progressBar);
         
+        LineGraph lineGraph = new LineGraph();
+        GraphicalView gViewGraph = lineGraph.getGraph(this);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.llGraph);
+        layout.addView(gViewGraph);
+       
     }
 
     @Override
@@ -59,7 +67,7 @@ public class MainActivity extends Activity {
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Stoped");
     	microphoneRecoder.stopRecording();
-    	setProgresBar(0);
+    	//setProgresBar(0);
     	
     	Button btn = (Button)findViewById(R.id.btnStop);
     	btn.setEnabled(false);
@@ -72,7 +80,7 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
     
-    public synchronized void setProgresBar(int value)
+   /* public synchronized void setProgresBar(int value)
     {
     	mProgressStatus = (int)(value);///2.55);
     	// Update the progress bar
@@ -84,5 +92,8 @@ public class MainActivity extends Activity {
                 ed.setText(Integer.toString(mProgressStatus));
             }
         });
-    }
+    }*/
+    
+    
+    
 }

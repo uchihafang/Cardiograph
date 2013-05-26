@@ -13,7 +13,7 @@ public class AudioFilter {
 
 	public synchronized void setBuffer(byte bData[]) {
 		Data = bData;
-		activity.setProgresBar(Data[1]);
+		//activity.setProgresBar(Data[1]);
 	}
 	
 	public synchronized byte[] getBuffer() {

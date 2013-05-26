@@ -16,7 +16,7 @@
         android:id="@+id/btnStop"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar"
+        android:layout_below="@+id/llGraph"
         android:layout_toRightOf="@+id/btnStart"
         android:layout_margin="5dp"
         android:onClick="onBtnStopClick"
@@ -27,12 +27,12 @@
         android:id="@+id/btnStart"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar"
+        android:layout_below="@+id/llGraph"
         android:layout_margin="5dp"
         android:onClick="onBtnStartClick"
         android:text="Start" />
 
-    <ProgressBar
+    <!-- <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="fill_parent"
@@ -41,7 +41,18 @@
         android:layout_margin="5dp"
         android:layout_marginTop="0dp"
         android:maxHeight="50dip"
-        android:maxWidth="1000dip" />
+        android:maxWidth="1000dip" /> -->
+    
+    <LinearLayout 
+        android:id="@+id/llGraph"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/btnUserName"
+        android:layout_margin="5dp"
+        android:layout_marginTop="0dp"
+        android:maxHeight="50dip"
+        android:maxWidth="1000dip" 
+        android:orientation="horizontal" />
 
     <Button
         android:id="@+id/btnUserName"
