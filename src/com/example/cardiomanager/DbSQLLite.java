@@ -31,6 +31,10 @@ public class DbSQLLite extends SQLiteOpenHelper {
 
 	  @Override
 	  public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+		  // uncomment to delete data 
+		  //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+		  //onCreate(sqLiteDatabase);
+		  
 	  }
 
 }
