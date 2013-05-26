@@ -23,7 +23,7 @@ public class MicrophoneRecoder
 		bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
 	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
 		audioFilter = aF;
-		aF.showMassage(2);
+		//aF.showMassage(2);
 		
 		int[] rates = {8000, 11025, 22050, 44100, 48000, 96000 };
 		int[] chans = {AudioFormat.CHANNEL_IN_MONO, AudioFormat.CHANNEL_IN_STEREO};
@@ -80,38 +80,24 @@ public class MicrophoneRecoder
 
 	private void writeAudioDataToFile() {
 	    // Write the output audio in byte
-		//audioFilter.showMassage(4);
-	    //String filePath = "/sdcard/voice8K16bitmono.pcm";
 	    short sData[] = new short[BufferElements2Rec];
-
-	    /*FileOutputStream os = null;
-	    try {
-	        os = new FileOutputStream(filePath);
-	    } catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	    }*/
 
 	    while (isRecording) {
 	        // gets the voice output from microphone to byte format
 
 	        recorder.read(sData, 0, BufferElements2Rec);
-	        System.out.println("Short wirting to file" + sData.toString());
+	        System.out.println("Recorded " + sData.toString());
 	        try {
 	            // // writes the data to file from buffer
 	            // // stores the voice buffer
 	            byte bData[] = short2byte(sData);
 	            audioFilter.setBuffer(bData);
-	            // os.write(bData, 0, BufferElements2Rec * BytesPerElement);
+	            
 	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
 	    }
-//	    try {
-//	        os.close();
-//	    } catch (IOException e) {
-//	        e.printStackTrace();
-//	    }
 	}
 
 	public void stopRecording() {

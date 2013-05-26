@@ -5,15 +5,16 @@ import android.widget.Toast;
 public class AudioFilter {
 	
 	byte Data[];
-	MainActivity activity;
+	LineGraph lineGraph;
 	
-	public AudioFilter(MainActivity act) {
-		activity = act;
+	public AudioFilter(LineGraph graph) {
+		lineGraph = graph;
+			
 	}
 
 	public synchronized void setBuffer(byte bData[]) {
 		Data = bData;
-		//activity.setProgresBar(Data[1]);
+		lineGraph.addData(Data[1]);
 	}
 	
 	public synchronized byte[] getBuffer() {
@@ -21,7 +22,7 @@ public class AudioFilter {
 		return Data;
 	}
 	
-	public synchronized void showMassage(int massageN) {
+	/*public synchronized void showMassage(int massageN) {
 		
 		Toast toast = Toast.makeText(activity.getApplicationContext(), 
 				   "Пора покормить кота!", Toast.LENGTH_SHORT);
@@ -47,6 +48,6 @@ public class AudioFilter {
 		Toast toast = Toast.makeText(activity.getApplicationContext(), 
 				   Integer.toString(r)+" "+Integer.toString(c)+" "+Integer.toString(m), Toast.LENGTH_SHORT);
 		toast.show();
-	}
+	}*/
 
 }

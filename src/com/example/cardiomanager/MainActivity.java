@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 	AudioFilter audioFilter;
 	private LineGraph lineGraph;
 	private static GraphicalView gViewGraph;
-	private static Thread threadGraph;
+	Thread threadGraphUpdater;
 	
     //---methods---
     @Override
@@ -28,31 +28,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         //-creating classes-
-        audioFilter = new AudioFilter(MainActivity.this);
-        microphoneRecoder = new MicrophoneRecoder(audioFilter);
-        
         lineGraph = new LineGraph();
         gViewGraph = lineGraph.getView(this);
         LinearLayout layout = (LinearLayout) findViewById(R.id.llGraph);
         layout.addView(gViewGraph);
-        
-        threadGraph = new Thread() {
-        	public void run() {
-        		try {
-        			while(true) {
-                		lineGraph.addData(1);
-                		gViewGraph.repaint();
-                		Thread.sleep(200);
-                	}
-        			
-				} catch (InterruptedException e) {
-					// TODO: handle exception
-				}
         		
-        	}
-        };
-        threadGraph.start();
-       
+        audioFilter = new AudioFilter(lineGraph);
+        microphoneRecoder = new MicrophoneRecoder(audioFilter);
+        
     }
 
     @Override
@@ -69,6 +52,22 @@ public class MainActivity extends Activity {
     	text.setText("Started");
     	microphoneRecoder.startRecording();
     	
+    	if(threadGraphUpdater != null)
+    		threadGraphUpdater.destroy();
+    	threadGraphUpdater = new Thread() {
+			public void run() {
+				while(true) {
+					try {
+						Thread.sleep(100);
+						gViewGraph.repaint();
+						
+					}catch(InterruptedException e){
+						
+					}
+				}
+			}
+		};
+    	
     	Button btn = (Button)findViewById(R.id.btnStart);
     	btn.setEnabled(false);
     	btn = (Button)findViewById(R.id.btnStop);
@@ -80,7 +79,11 @@ public class MainActivity extends Activity {
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Stoped");
     	microphoneRecoder.stopRecording();
-    	//setProgresBar(0);
+    	
+    	if(threadGraphUpdater.isAlive()) {
+	    	threadGraphUpdater.stop();
+	    	threadGraphUpdater.destroy();
+    	}
     	
     	Button btn = (Button)findViewById(R.id.btnStop);
     	btn.setEnabled(false);
