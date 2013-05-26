@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -18,12 +17,10 @@ public class MainActivity extends Activity {
 	//---clauses---
 	MicrophoneRecoder microphoneRecoder;
 	AudioFilter audioFilter;
+	private LineGraph lineGraph;
+	private static GraphicalView gViewGraph;
+	private static Thread threadGraph;
 	
-	//---values---
-	private ProgressBar mProgress;
-    private int mProgressStatus = 0;
-    private Handler mHandler = new Handler();
-    
     //---methods---
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,12 +30,28 @@ public class MainActivity extends Activity {
         //-creating classes-
         audioFilter = new AudioFilter(MainActivity.this);
         microphoneRecoder = new MicrophoneRecoder(audioFilter);
-        //mProgress = (ProgressBar) findViewById(R.id.progressBar);
         
-        LineGraph lineGraph = new LineGraph();
-        GraphicalView gViewGraph = lineGraph.getGraph(this);
+        lineGraph = new LineGraph();
+        gViewGraph = lineGraph.getView(this);
         LinearLayout layout = (LinearLayout) findViewById(R.id.llGraph);
         layout.addView(gViewGraph);
+        
+        threadGraph = new Thread() {
+        	public void run() {
+        		try {
+        			while(true) {
+                		lineGraph.addData(1);
+                		gViewGraph.repaint();
+                		Thread.sleep(200);
+                	}
+        			
+				} catch (InterruptedException e) {
+					// TODO: handle exception
+				}
+        		
+        	}
+        };
+        threadGraph.start();
        
     }
 
@@ -79,21 +92,5 @@ public class MainActivity extends Activity {
     	Intent intent = new Intent(MainActivity.this, UserListActivity.class);
         startActivity(intent);
     }
-    
-   /* public synchronized void setProgresBar(int value)
-    {
-    	mProgressStatus = (int)(value);///2.55);
-    	// Update the progress bar
-        mHandler.post(new Runnable() {
-            public void run() {
-                mProgress.setProgress(mProgressStatus);
-                
-                TextView ed = (TextView) findViewById(R.id.editView);
-                ed.setText(Integer.toString(mProgressStatus));
-            }
-        });
-    }*/
-    
-    
     
 }

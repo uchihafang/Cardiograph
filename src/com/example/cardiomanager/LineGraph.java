@@ -8,31 +8,45 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
 import android.content.Context;
+import android.graphics.Color;
 
 public class LineGraph {
 
+	//variables
+	int counter;
+	
+	//objects
+	GraphicalView gView;
+	TimeSeries timeSeries = new TimeSeries("Line");
+	XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+	XYSeriesRenderer renderer = new XYSeriesRenderer();
+	XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
+	
+	//methods
 	public LineGraph() {
-		// TODO Auto-generated constructor stub
+		counter = 0;
+		
+		dataset.addSeries(timeSeries);
+		
+		renderer.setColor(Color.BLACK);
+		mRenderer.setBackgroundColor(Color.BLACK);
+    	mRenderer.setAxesColor(Color.BLACK);
+    	mRenderer.setMarginsColor(Color.YELLOW);
+    	mRenderer.setZoomButtonsVisible(true);
+    	
+    	mRenderer.addSeriesRenderer(renderer);
 	}
 
-	public GraphicalView getGraph(Context context)
-    {
-    	int x[] = {1, 2, 3, 4, 5};
-    	int y[] = {10, 8, 55, 3, 8};
-    	
-    	TimeSeries timeSeries = new TimeSeries("Line");
-    	for (int i = 0; i < y.length; i++) {
-			timeSeries.add(x[i], y[i]);
-		}
-    	
-    	XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-    	dataset.addSeries(timeSeries);
-    	
-    	XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
-    	XYSeriesRenderer renderer = new XYSeriesRenderer();
-    	mRenderer.addSeriesRenderer(renderer);
-    	
-    	return ChartFactory.getLineChartView(context, dataset, mRenderer);
+	public GraphicalView getView(Context context)
+    {	
+		gView = ChartFactory.getLineChartView(context, dataset, mRenderer);
+    	return gView;
     }
-
+	
+	public void addData(int value)
+	{
+		timeSeries.add(value, counter);
+		counter++;
+	}
+	
 }
