@@ -16,7 +16,7 @@ public class MicrophoneRecoder
 	private boolean isRecording = false;
 	private AudioFilter audioFilter;
 	private int bufferSize;
-	
+
 	public MicrophoneRecoder(AudioFilter aF)
 	{
 		//aF.showMassage(1);
@@ -24,7 +24,7 @@ public class MicrophoneRecoder
 	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
 		audioFilter = aF;
 		//aF.showMassage(2);
-		
+
 		//check anaible formats
 		/*int[] rates = {8000, 11025, 22050, 44100, 48000, 96000 };
 		int[] chans = {AudioFormat.CHANNEL_IN_MONO, AudioFormat.CHANNEL_IN_STEREO};
@@ -46,15 +46,16 @@ public class MicrophoneRecoder
 		    }
 		}*/
 	}
-	    
+
 	int BufferElements2Rec = 1024; // want to play 2048 (2K) since 2 bytes we use only 1024
 	int BytesPerElement = 2; // 2 bytes in 16bit format
-	
+
 	public void startRecording() {
 	    recorder = new AudioRecord(MediaRecorder.AudioSource.MIC,
 	            RECORDER_SAMPLERATE, RECORDER_CHANNELS,
 	            RECORDER_AUDIO_ENCODING, BufferElements2Rec * BytesPerElement);
 	    //audioFilter.showMassage(3);
+	    //recorder.release();
 	    recorder.startRecording();
 	    isRecording = true;
 	    recordingThread = new Thread(new Runnable() {
@@ -64,7 +65,7 @@ public class MicrophoneRecoder
 	    }, "AudioRecorder Thread");
 	    recordingThread.start();
 	}
-	
+
 	 //convert short to byte
 	private byte[] short2byte(short[] sData) {
 	    int shortArrsize = sData.length;
@@ -92,7 +93,7 @@ public class MicrophoneRecoder
 	            // // writes the data to file from buffer
 	            // // stores the voice buffer
 	            //byte bData[] = short2byte(sData);
-	            	            
+
 	        //} catch (Exception e) {
 	        //    e.printStackTrace();
 	        //}

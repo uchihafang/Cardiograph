@@ -34,7 +34,12 @@ public class MainActivity extends Activity {
         layout.addView(gViewGraph);
         		
         audioFilter = new AudioFilter(lineGraph);
+        audioFilter.setActivity(this);// TODO del, debug only
         microphoneRecoder = new MicrophoneRecoder(audioFilter);
+        
+        lineGraph.addData(100);
+        lineGraph.addData(-50);
+        lineGraph.addData(10);
         
     }
 

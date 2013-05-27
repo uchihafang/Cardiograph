@@ -1,5 +1,6 @@
 package com.example.cardiomanager;
 
+import android.app.Activity;
 import android.widget.Toast;
 
 public class AudioFilter {
@@ -28,7 +29,13 @@ public class AudioFilter {
 		return Data;
 	}
 	
-	/*public synchronized void showMassage(int massageN) {
+	Activity activity;
+	
+	public void setActivity(Activity act) {
+		activity = act;
+	}
+	
+	public synchronized void showMassage(int massageN) {
 		
 		Toast toast = Toast.makeText(activity.getApplicationContext(), 
 				   "Пора покормить кота!", Toast.LENGTH_SHORT);
@@ -45,11 +52,17 @@ public class AudioFilter {
 		case 4:
 			toast.setText("Thread started");
 			break;
+		case 5:
+			toast.setText("Initialization Feild");
+		break;
+		case 6:
+			toast.setText("Data read");
+		break;
 		}
 		toast.show();
 	}
 	
-	public synchronized void showFormat(int r, int c, int m ) {
+	/*public synchronized void showFormat(int r, int c, int m ) {
 		
 		Toast toast = Toast.makeText(activity.getApplicationContext(), 
 				   Integer.toString(r)+" "+Integer.toString(c)+" "+Integer.toString(m), Toast.LENGTH_SHORT);
