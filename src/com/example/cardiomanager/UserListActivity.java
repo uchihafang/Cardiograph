@@ -2,11 +2,13 @@ package com.example.cardiomanager;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Gallery.LayoutParams;
 import android.widget.LinearLayout;
@@ -50,7 +52,7 @@ public class UserListActivity extends Activity {
     	String selectQuery = "SELECT  * FROM " + DbSQLLite.TABLE_NAME;//set query
     	Cursor cursor = db.rawQuery(selectQuery, null);//get data from base
     	//create visual container
-    	LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    	LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
     	layoutParams.gravity = Gravity.LEFT;
     	if (cursor.moveToFirst()) {//if query not empty
             do {
@@ -66,5 +68,11 @@ public class UserListActivity extends Activity {
     	button.setLayoutParams(layoutParams);//set visual params 
     	button.setId(99);//set ID
     	llBtnContainer.addView(button, layoutParams);//add on Activity
+    	button.setOnClickListener(new View.OnClickListener() {//btnNew OnClick
+            public void onClick(View v) {
+            	Intent intent = new Intent(UserListActivity.this, PersonalActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
