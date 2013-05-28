@@ -1,9 +1,7 @@
 package com.example.cardiomanager;
 
 import org.achartengine.GraphicalView;
-
 import android.os.Bundle;
-import android.os.Handler;
 import android.content.Intent;
 import android.app.Activity;
 import android.view.Menu;

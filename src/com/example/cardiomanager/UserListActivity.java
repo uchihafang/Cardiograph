@@ -2,6 +2,8 @@ package com.example.cardiomanager;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,14 +45,26 @@ public class UserListActivity extends Activity {
 
     private void CreateButtonList() {
     	
+    	DbSQLLite dbSQLLite = new DbSQLLite(UserListActivity.this);//create database class
+        SQLiteDatabase db = dbSQLLite.getWritableDatabase();	//open database
+    	String selectQuery = "SELECT  * FROM " + DbSQLLite.TABLE_NAME;//set query
+    	Cursor cursor = db.rawQuery(selectQuery, null);//get data from base
+    	//create visual container
     	LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-    	layoutParams.gravity =Gravity.LEFT;
-    	for (int i = 0; i < 3; i++) {
-	    	Button button = new Button(this);      
-	    	button.setText("asdas");
-	    	button.setLayoutParams(layoutParams);
-	    	button.setId(i);
-	    	llBtnContainer.addView(button, layoutParams);
-    	}
+    	layoutParams.gravity = Gravity.LEFT;
+    	if (cursor.moveToFirst()) {//if query not empty
+            do {
+            	Button button = new Button(this);//create button
+            	button.setText(cursor.getString(1));//set Name
+            	button.setLayoutParams(layoutParams);//set visual params 
+    	    	button.setId(cursor.getInt(0));//set ID
+    	    	llBtnContainer.addView(button, layoutParams);//add on Activity
+            } while (cursor.moveToNext());//while exists
+        }
+    	Button button = new Button(this);//create button for addNew
+    	button.setText("Add new User");//set Name //TODO add string to values
+    	button.setLayoutParams(layoutParams);//set visual params 
+    	button.setId(99);//set ID
+    	llBtnContainer.addView(button, layoutParams);//add on Activity
     }
 }

@@ -39,19 +39,19 @@ public class PersonalActivity extends Activity {
         SQLiteDatabase db = dbSQLLite.getWritableDatabase();
         try {
             ContentValues cv = new ContentValues();
-            cv.put(dbSQLLite.USERNAME ,edName.getText().toString());
-            cv.put(dbSQLLite.DATEBRTH ,edDate.getText().toString());
-            cv.put(dbSQLLite.HEIGHT ,edHeight.getText().toString());
-            cv.put(dbSQLLite.WEIGHT ,edInfo.getText().toString());
-            cv.put(dbSQLLite.DASEASES ,edName.getText().toString());
-            db.insert(dbSQLLite.TABLE_NAME,null,cv);
+            cv.put(DbSQLLite.USERNAME ,edName.getText().toString());
+            cv.put(DbSQLLite.DATEBRTH ,edDate.getText().toString());
+            cv.put(DbSQLLite.HEIGHT ,edHeight.getText().toString());
+            cv.put(DbSQLLite.WEIGHT ,edWeight.getText().toString());
+            cv.put(DbSQLLite.DASEASES ,edInfo.getText().toString());
+            db.insert(DbSQLLite.TABLE_NAME,null,cv);
 		} 
         finally {
         	db.close();
 		}
     }
     
-    private void getFromDataBase(int ID) {
+    //private void getFromDataBase(int ID) {
     	/*DbSQLLite dbSQLLite = new DbSQLLite(PersonalActivity.this);
         SQLiteDatabase db = dbSQLLite.getReadableDatabase();
         try {
@@ -76,5 +76,5 @@ public class PersonalActivity extends Activity {
                c.moveToFirst();                                       
                contact = cursorToContact(c);
         }*/
-    }
+    //}
 }

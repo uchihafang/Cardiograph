@@ -22,7 +22,7 @@ public class AudioFilter {
 		Data = sData;
 		int S = 0;
 		//for(int j = 0; j < bufferSize; j += 1000) {
-			for (int i = 0; i < 5; i++) {
+			for (int i = 50; i < 70; i++) {
 				S += Data[i];
 			}
 			S /= 30 - 10;
