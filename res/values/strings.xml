@@ -12,5 +12,10 @@
     <string name="menu_personal">Personal Info</string>
     <string name="menu_about">About</string>
     <string name="title_activity_preferences">Settings</string>
+    <string name="preferenses_category_audio_title">Audio format settings </string>
+    <string name="preferenses_sample_rate_title">Sample rate</string>
+    <string name="preferenses_channels_title">Channel</string>
+    <string name="preferenses_encoding_title">Encoding</string>
+    <string name="preferenses_channels_text">Enable use stereo recording</string>
 
 </resources>

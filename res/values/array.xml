@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string-array name="listArray">
-   <item>Number 1</item>
-   <item>Number 2</item>
-   <item>Number 3</item>
-   <item>Number 4</item>
+<string-array name="listSampleRates">
+   <item>8000</item>
+   <item>11025</item>
+   <item>22050</item>
+   <item>44100</item>
+   <item>48000</item>
+   <item>96000</item>
 </string-array>
  
-<string-array name="listValues">
-   <item>1</item>
-   <item>2</item>
-   <item>3</item>
-   <item>4</item>
+<string-array name="listEncoding">
+   <item>Encoding in 8 bit</item>
+   <item>Encoding in 16 bit</item>
+</string-array>
+
+<string-array name="listBoolean">
+   <item>false</item>
+   <item>true</item>
 </string-array>
 </resources>
