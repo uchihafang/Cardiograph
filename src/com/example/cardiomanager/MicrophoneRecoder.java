@@ -19,12 +19,22 @@ public class MicrophoneRecoder
 
 	public MicrophoneRecoder(AudioFilter aF)
 	{
-		//aF.showMassage(1);
+		audioFilter = aF;
+		if(checkConfigurations())
+			aF.showMassage(7);
+		else
+			aF.showMassage(8);
+		
 		bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
 	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
-		audioFilter = aF;
+		
 		//aF.showMassage(2);
 
+		
+	}
+	
+	private boolean checkConfigurations()
+	{
 		//check anaible formats
 		/*int[] rates = {8000, 11025, 22050, 44100, 48000, 96000 };
 		int[] chans = {AudioFormat.CHANNEL_IN_MONO, AudioFormat.CHANNEL_IN_STEREO};
@@ -45,6 +55,13 @@ public class MicrophoneRecoder
 		        }
 		    }
 		}*/
+		
+		int t = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
+	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
+		if((t != AudioRecord.ERROR) && (t != AudioRecord.ERROR_BAD_VALUE))
+			return true;
+		else
+			return false;
 	}
 
 	int BufferElements2Rec = 1024; // want to play 2048 (2K) since 2 bytes we use only 1024
@@ -67,7 +84,7 @@ public class MicrophoneRecoder
 	}
 
 	 //convert short to byte
-	private byte[] short2byte(short[] sData) {
+	/*private byte[] short2byte(short[] sData) {
 	    int shortArrsize = sData.length;
 	    byte[] bytes = new byte[shortArrsize * 2];
 	    for (int i = 0; i < shortArrsize; i++) {
@@ -76,8 +93,7 @@ public class MicrophoneRecoder
 	        sData[i] = 0;
 	    }
 	    return bytes;
-
-	}
+	}*/
 
 	private void writeAudioDataToFile() {
 	    // Write the output audio in byte

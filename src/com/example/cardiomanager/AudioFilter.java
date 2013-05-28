@@ -54,10 +54,16 @@ public class AudioFilter {
 			break;
 		case 5:
 			toast.setText("Initialization Feild");
-		break;
+			break;
 		case 6:
 			toast.setText("Data read");
-		break;
+			break;
+		case 7:
+			toast.setText("Configuration OK");
+			break;
+		case 8:
+			toast.setText("Configuration Failed");
+			break;
 		}
 		toast.show();
 	}
