@@ -7,21 +7,28 @@ public class AudioFilter {
 	
 	short Data[];
 	LineGraph lineGraph;
+	int bufferSize;
 	
 	public AudioFilter(LineGraph graph) {
 		lineGraph = graph;
 			
 	}
 
+	public void  setBufferSize(int size) {
+		bufferSize = size;
+	}
+	
 	public synchronized void setBuffer(short sData[]) {
 		Data = sData;
 		int S = 0;
-		for (int i = 10; i < 30; i++) {
-			S += Data[i];
-		}
-		S /= 30 - 10;
-		Math.abs(S);
-		lineGraph.addData(S);
+		//for(int j = 0; j < bufferSize; j += 1000) {
+			for (int i = 0; i < 5; i++) {
+				S += Data[i];
+			}
+			S /= 30 - 10;
+			Math.abs(S);
+			lineGraph.addData(S);
+		//}
 	}
 	
 	public synchronized short[] getBuffer() {

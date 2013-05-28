@@ -20,6 +20,7 @@ public class MicrophoneRecoder
 	public MicrophoneRecoder(AudioFilter aF)
 	{
 		audioFilter = aF;
+		
 		if(checkConfigurations())
 			aF.showMassage(7);
 		else
@@ -27,10 +28,7 @@ public class MicrophoneRecoder
 		
 		bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
 	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
-		
-		//aF.showMassage(2);
-
-		
+		aF.setBufferSize(bufferSize);	
 	}
 	
 	private boolean checkConfigurations()
