@@ -35,9 +35,16 @@ public class MainActivity extends Activity {
         audioFilter.setActivity(this);// TODO del, debug only
         microphoneRecoder = new MicrophoneRecoder(audioFilter);
         
-        lineGraph.addData(100);
-        lineGraph.addData(-50);
-        lineGraph.addData(10);
+        //set Button name
+        String strName = getString(R.string.btnUserNameText);
+        DbSQLLite dbSQLLite = new DbSQLLite(this);
+        //try {
+        	strName = dbSQLLite.getUserName(getIntent().getExtras().getInt("Key_ID"));
+        	Button button = (Button) findViewById(R.id.btnUserName);
+        	button.setText(strName);
+        //}catch(Exception e) {
+        	//
+        //}
         
     }
 

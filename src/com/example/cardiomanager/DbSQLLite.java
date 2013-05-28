@@ -1,6 +1,7 @@
 package com.example.cardiomanager;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -36,6 +37,27 @@ public class DbSQLLite extends SQLiteOpenHelper {
 		  //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 		  //onCreate(sqLiteDatabase);
 		  
+	  }
+	  
+	  public String getUserName(int id)
+	  {
+		  SQLiteDatabase db = getReadableDatabase();
+		  String name = "User Name";
+		  try {
+	        	String[] selectedColumns = new String[] {DbSQLLite.USERNAME};
+	        	Cursor cursor = db.query(DbSQLLite.TABLE_NAME, selectedColumns,
+	        			DbSQLLite.USER_ID + "=?",
+	                    new String[] { String.valueOf(id) }, null, null, null, null);
+	     
+	            if (cursor != null){
+	                cursor.moveToFirst();
+	                name = cursor.getString(0);
+	            }
+			} 
+	        finally {
+	        	db.close();
+			}
+		  return name;
 	  }
 
 }

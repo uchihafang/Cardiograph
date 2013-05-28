@@ -62,7 +62,7 @@ public class UserListActivity extends Activity {
     	    	button.setId(cursor.getInt(0));//set ID
     	    	button.setOnClickListener(new View.OnClickListener() {//btnNew OnClick
     	            public void onClick(View v) {
-    	            	Intent intent = new Intent(UserListActivity.this, PersonalActivity.class);
+    	            	Intent intent = new Intent(UserListActivity.this, MainActivity.class);
     	            	intent.putExtra("Key_ID", v.getId());
     	                startActivity(intent);
     	            }
