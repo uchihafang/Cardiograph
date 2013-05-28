@@ -16,7 +16,7 @@ public class DbSQLLite extends SQLiteOpenHelper {
 	public static final String HEIGHT = "height";
 	public static final String WEIGHT = "weight";
 	public static final String DASEASES = "DESEASES";
-	private static final String CREATE_TABLE = "create table " + TABLE_NAME + " ( _id integer primary key autoincrement, "
+	public static final String CREATE_TABLE = "create table " + TABLE_NAME + " ( _id integer primary key autoincrement, "
 	      + USERNAME + " TEXT NOT NULL, " + DATEBRTH + " TEXT, " + HEIGHT + " INTEGER, " + WEIGHT + " INTEGER, " + DASEASES + " TEXT)";
 
 	public DbSQLLite(Context context) {

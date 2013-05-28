@@ -26,6 +26,9 @@ public class PersonalActivity extends Activity {
         edHeight = (EditText) findViewById(R.id.edHeight);
         edWeight = (EditText) findViewById(R.id.edWeight);
         edInfo = (EditText) findViewById(R.id.edInfo);
+        
+        
+        edHeight.setText(Integer.toString(getIntent().getExtras().getInt("Key_ID")));
     }
 
     @Override

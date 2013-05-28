@@ -60,6 +60,13 @@ public class UserListActivity extends Activity {
             	button.setText(cursor.getString(1));//set Name
             	button.setLayoutParams(layoutParams);//set visual params 
     	    	button.setId(cursor.getInt(0));//set ID
+    	    	button.setOnClickListener(new View.OnClickListener() {//btnNew OnClick
+    	            public void onClick(View v) {
+    	            	Intent intent = new Intent(UserListActivity.this, PersonalActivity.class);
+    	            	intent.putExtra("Key_ID", v.getId());
+    	                startActivity(intent);
+    	            }
+    	        });
     	    	llBtnContainer.addView(button, layoutParams);//add on Activity
             } while (cursor.moveToNext());//while exists
         }
@@ -71,6 +78,8 @@ public class UserListActivity extends Activity {
     	button.setOnClickListener(new View.OnClickListener() {//btnNew OnClick
             public void onClick(View v) {
             	Intent intent = new Intent(UserListActivity.this, PersonalActivity.class);
+            	int id = 999;
+            	intent.putExtra("Key_ID",  id);
                 startActivity(intent);
             }
         });
