@@ -8,9 +8,9 @@ import android.media.MediaRecorder;
 
 public class MicrophoneRecoder
 {
-	public static int RECORDER_SAMPLERATE = 8000; //In device use samplerate to 44100 for better quality
-	private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
-	private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
+	private static int RECORDER_SAMPLERATE = 8000; //In device use samplerate to 44100 for better quality
+	private static int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
+	private static int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
 	private AudioRecord recorder = null;
 	private Thread recordingThread = null;
 	private boolean isRecording = false;
@@ -31,37 +31,6 @@ public class MicrophoneRecoder
 		aF.setBufferSize(bufferSize);	
 	}
 	
-	private boolean checkConfigurations()
-	{
-		//check anaible formats
-		/*int[] rates = {8000, 11025, 22050, 44100, 48000, 96000 };
-		int[] chans = {AudioFormat.CHANNEL_IN_MONO, AudioFormat.CHANNEL_IN_STEREO};
-		int[] encs  = {AudioFormat.ENCODING_PCM_8BIT, AudioFormat.ENCODING_PCM_16BIT};
-
-		for(int enc : encs)
-		{
-		    for(int ch : chans)
-		    {
-		        for(int rate : rates)
-		        {
-		            int t = AudioRecord.getMinBufferSize(rate, ch, enc);
-		            
-		            if((t != AudioRecord.ERROR) && (t != AudioRecord.ERROR_BAD_VALUE))
-		            {
-		                //aF.showFormat(rate, ch, enc);
-		            }
-		        }
-		    }
-		}*/
-		
-		int t = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
-	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
-		if((t != AudioRecord.ERROR) && (t != AudioRecord.ERROR_BAD_VALUE))
-			return true;
-		else
-			return false;
-	}
-
 	int BufferElements2Rec = 1024; // want to play 2048 (2K) since 2 bytes we use only 1024
 	int BytesPerElement = 2; // 2 bytes in 16bit format
 
@@ -107,14 +76,6 @@ public class MicrophoneRecoder
 	        recorder.read(sData, 0, BufferElements2Rec);  
 	        audioFilter.setBuffer(sData);
 	        System.out.println("Recorded");
-	        //try {
-	            // // writes the data to file from buffer
-	            // // stores the voice buffer
-	            //byte bData[] = short2byte(sData);
-
-	        //} catch (Exception e) {
-	        //    e.printStackTrace();
-	        //}
 	    }
 	}
 
@@ -128,4 +89,47 @@ public class MicrophoneRecoder
 	        recordingThread = null;
 	    }
 	}
+	
+	static public boolean checkConfigurations()
+	{
+		//check anaible formats
+		/*int[] rates = {8000, 11025, 22050, 44100, 48000, 96000 };
+		int[] chans = {AudioFormat.CHANNEL_IN_MONO, AudioFormat.CHANNEL_IN_STEREO};
+		int[] encs  = {AudioFormat.ENCODING_PCM_8BIT, AudioFormat.ENCODING_PCM_16BIT};
+		for(int enc : encs) {
+		    for(int ch : chans)    {
+		        for(int rate : rates) {
+		            int t = AudioRecord.getMinBufferSize(rate, ch, enc);
+		            if((t != AudioRecord.ERROR) && (t != AudioRecord.ERROR_BAD_VALUE))
+		            {
+		                //aF.showFormat(rate, ch, enc);
+		            }}}}*/
+		
+		int t = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
+	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
+		if((t != AudioRecord.ERROR) && (t != AudioRecord.ERROR_BAD_VALUE))
+			return true;
+		else
+			return false;
+	}
+	
+	static public void setRECORDER_SAMPLERATE(int value) {
+		RECORDER_SAMPLERATE = value;
+	}
+	
+	static public void setRECORDER_CHANNELS(Boolean value) {
+		if(!value)
+			RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
+		else
+			RECORDER_CHANNELS = AudioFormat.CHANNEL_CONFIGURATION_STEREO;
+			
+	}
+	
+	static public void setRECORDER_AUDIO_ENCODING(Boolean value) {
+		if(!value)
+			RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_8BIT;
+		else
+			RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
+	}
+	
 }
