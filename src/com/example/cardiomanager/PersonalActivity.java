@@ -3,6 +3,7 @@ package com.example.cardiomanager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
@@ -16,6 +17,8 @@ public class PersonalActivity extends Activity {
 	private EditText edWeight;
 	private EditText edInfo;
 	
+	private int id;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +30,11 @@ public class PersonalActivity extends Activity {
         edWeight = (EditText) findViewById(R.id.edWeight);
         edInfo = (EditText) findViewById(R.id.edInfo);
         
-        
-        edHeight.setText(Integer.toString(getIntent().getExtras().getInt("Key_ID")));
+        //finding user
+        id = getIntent().getExtras().getInt("Key_ID");
+        if(id != 999)
+          	getFromDataBase(id);
+        edHeight.setText(Integer.toString(id));
     }
 
     @Override
@@ -47,37 +53,40 @@ public class PersonalActivity extends Activity {
             cv.put(DbSQLLite.HEIGHT ,edHeight.getText().toString());
             cv.put(DbSQLLite.WEIGHT ,edWeight.getText().toString());
             cv.put(DbSQLLite.DASEASES ,edInfo.getText().toString());
-            db.insert(DbSQLLite.TABLE_NAME,null,cv);
+            
+            if(id == 999)
+            	db.insert(DbSQLLite.TABLE_NAME,null,cv);
+            else
+            	db.update(DbSQLLite.TABLE_NAME, cv, DbSQLLite.USER_ID + " = ?",
+                        new String[] { String.valueOf(id) });
 		} 
         finally {
         	db.close();
 		}
     }
     
-    //private void getFromDataBase(int ID) {
-    	/*DbSQLLite dbSQLLite = new DbSQLLite(PersonalActivity.this);
+    private void getFromDataBase(int ID) {
+    	DbSQLLite dbSQLLite = new DbSQLLite(PersonalActivity.this);
         SQLiteDatabase db = dbSQLLite.getReadableDatabase();
         try {
-            ContentValues cv = new ContentValues();
-            cv.put(dbSQLLite.USERNAME ,edName.getText().toString());
-            cv.put(dbSQLLite.DATEBRTH ,edDate.getText().toString());
-            cv.put(dbSQLLite.HEIGHT ,edHeight.getText().toString());
-            cv.put(dbSQLLite.WEIGHT ,edInfo.getText().toString());
-            cv.put(dbSQLLite.DASEASES ,edName.getText().toString());
-            db.insert(dbSQLLite.TABLE_NAME,null,cv);
+        	String[] selectedColumns = new String[] { DbSQLLite.USER_ID,
+        			DbSQLLite.USERNAME, DbSQLLite.DATEBRTH, DbSQLLite.HEIGHT, 
+        			DbSQLLite.WEIGHT, DbSQLLite.DASEASES };
+        	Cursor cursor = db.query(DbSQLLite.TABLE_NAME, selectedColumns,
+        			DbSQLLite.USER_ID + "=?",
+                    new String[] { String.valueOf(id) }, null, null, null, null);
+     
+            if (cursor != null){
+                cursor.moveToFirst();
+                edName.setText(cursor.getString(1));
+                edDate.setText(cursor.getString(2));
+                edHeight.setText(cursor.getString(3));
+                edWeight.setText(cursor.getString(4));
+                edInfo.setText(cursor.getString(5));
+            }
 		} 
         finally {
         	db.close();
 		}
-        
-        
-        String whereBatch = DbSQLLite.CONTACTS_ID_NAME + " = ?";
-        Cursor c = database.query(ContactsDBHelper.CONTACTS_TABLE_NAME, selectedColumns, whereBatch, new String[]{ Long.toString(id) }, null, null, ContactsDBHelper.CONTACTS_USER_NAME);            
-        Contact contact = null;
-        if(c.getCount() > 0)
-        {
-               c.moveToFirst();                                       
-               contact = cursorToContact(c);
-        }*/
-    //}
+    }
 }
