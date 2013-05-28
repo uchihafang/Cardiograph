@@ -13,11 +13,11 @@
                         android:title="@string/preferenses_channels_title"
                         android:defaultValue="false"
                         android:summary="@string/preferenses_channels_text"
-                        android:key="channels" />
+                        android:key="Channels" />
 	    <ListPreference
                         android:title="@string/preferenses_encoding_title"
                         android:summary="This preference allows to select an item in a array"
-                        android:key="encoding"
+                        android:key="Encoding"
                         android:defaultValue="false"
                         android:entries="@array/listEncoding"
                         android:entryValues="@array/listBoolean" />

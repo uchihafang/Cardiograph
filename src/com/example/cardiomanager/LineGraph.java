@@ -12,41 +12,39 @@ import android.graphics.Color;
 
 public class LineGraph {
 
-	//variables
+	// variables
 	int counter;
-	
-	//objects
+
+	// objects
 	GraphicalView gView;
 	TimeSeries timeSeries = new TimeSeries("Line");
 	XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
 	XYSeriesRenderer renderer = new XYSeriesRenderer();
 	XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
-	
-	//methods
+
+	// methods
 	public LineGraph() {
 		counter = 0;
-		
+
 		dataset.addSeries(timeSeries);
-		
+
 		renderer.setColor(Color.BLACK);
 		mRenderer.setBackgroundColor(Color.BLACK);
-    	mRenderer.setAxesColor(Color.BLACK);
-    	mRenderer.setMarginsColor(Color.WHITE);
-    	mRenderer.setZoomButtonsVisible(true);
-    	
-    	mRenderer.addSeriesRenderer(renderer);
+		mRenderer.setAxesColor(Color.BLACK);
+		mRenderer.setMarginsColor(Color.WHITE);
+		mRenderer.setZoomButtonsVisible(true);
+
+		mRenderer.addSeriesRenderer(renderer);
 	}
 
-	public GraphicalView getView(Context context)
-    {	
+	public GraphicalView getView(Context context) {
 		gView = ChartFactory.getLineChartView(context, dataset, mRenderer);
-    	return gView;
-    }
-	
-	public synchronized void addData(int value)
-	{
+		return gView;
+	}
+
+	public synchronized void addData(int value) {
 		timeSeries.add(counter, value);
 		counter++;
 	}
-	
+
 }
