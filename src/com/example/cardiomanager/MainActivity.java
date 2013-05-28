@@ -55,7 +55,12 @@ public class MainActivity extends Activity {
     	TextView text;
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Started");
-    	microphoneRecoder.startRecording();
+    	try {
+    		microphoneRecoder.startRecording();
+    	} catch(Exception e)
+    	{
+    		
+    	}
     	
     	/*if(threadGraphUpdater == null) {
 	    	threadGraphUpdater = new Thread() {
@@ -84,7 +89,12 @@ public class MainActivity extends Activity {
     	TextView text;
     	text = (TextView) findViewById(R.id.editView);
     	text.setText("Stoped");
-    	microphoneRecoder.stopRecording();
+    	try {
+    		microphoneRecoder.stopRecording();
+    	} catch(Exception e)
+    	{
+    		
+    	}
     	
     	/*if(threadGraphUpdater.isAlive()) {
 	    	threadGraphUpdater.stop();
