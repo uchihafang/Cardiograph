@@ -1,14 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".Preferences" />
-
-</RelativeLayout>
+    <CheckBoxPreference
+                        android:title="Checkbox Preference"
+                        android:defaultValue="false"
+                        android:summary="This preference can be true or false"
+                        android:key="checkboxPref" />
+</PreferenceScreen>

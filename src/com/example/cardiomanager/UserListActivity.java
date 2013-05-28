@@ -38,9 +38,10 @@ public class UserListActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.button1:
-                NavUtils.navigateUpFromSameTask(this); // TODO
-                return true;
+        case R.id.menu_settings:
+        	Intent intentSet = new Intent(UserListActivity.this, Preferences.class);
+            startActivity(intentSet);
+        	return true;
         }
         return super.onOptionsItemSelected(item);
     }
