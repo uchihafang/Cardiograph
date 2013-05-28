@@ -15,9 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" 
-            android:screenOrientation = "landscape" >
-            
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".AboutActivity"
@@ -25,9 +24,8 @@
         </activity>
         <activity
             android:name=".PersonalActivity"
-            android:label="@string/title_activity_personal" 
-			android:screenOrientation = "portrait" >
-            
+            android:label="@string/title_activity_personal"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".UserListActivity"
@@ -35,11 +33,19 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.ListActivity" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Preferences"
+            android:label="@string/title_activity_preferences" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.preference.PreferenceActivity" />
         </activity>
     </application>
 

@@ -69,6 +69,10 @@ public class MainActivity extends Activity {
             	Intent intentAct = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(intentAct);
             	return true;
+            case R.id.menu_settings:
+            	Intent intentSet = new Intent(MainActivity.this, Preferences.class);
+                startActivity(intentSet);
+            	return true;
             default:  return super.onOptionsItemSelected(item);
         }
     }
