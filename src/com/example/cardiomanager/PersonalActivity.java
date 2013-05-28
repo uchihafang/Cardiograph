@@ -44,25 +44,35 @@ public class PersonalActivity extends Activity {
     }
     
     public void onBtnDoneClick(View view) {
-    	DbSQLLite dbSQLLite = new DbSQLLite(PersonalActivity.this);
-        SQLiteDatabase db = dbSQLLite.getWritableDatabase();
-        try {
-            ContentValues cv = new ContentValues();
-            cv.put(DbSQLLite.USERNAME ,edName.getText().toString());
-            cv.put(DbSQLLite.DATEBRTH ,edDate.getText().toString());
-            cv.put(DbSQLLite.HEIGHT ,edHeight.getText().toString());
-            cv.put(DbSQLLite.WEIGHT ,edWeight.getText().toString());
-            cv.put(DbSQLLite.DASEASES ,edInfo.getText().toString());
-            
-            if(id == 999)
-            	db.insert(DbSQLLite.TABLE_NAME,null,cv);
-            else
-            	db.update(DbSQLLite.TABLE_NAME, cv, DbSQLLite.USER_ID + " = ?",
-                        new String[] { String.valueOf(id) });
-		} 
-        finally {
-        	db.close();
-		}
+    	if(edName.getText().length() > 1 && edDate.getText().length() >= 8)
+    	{
+	    	DbSQLLite dbSQLLite = new DbSQLLite(PersonalActivity.this);
+	        SQLiteDatabase db = dbSQLLite.getWritableDatabase();
+	        try {
+	            ContentValues cv = new ContentValues();
+	            cv.put(DbSQLLite.USERNAME ,edName.getText().toString());
+	            cv.put(DbSQLLite.DATEBRTH ,edDate.getText().toString());
+	            cv.put(DbSQLLite.HEIGHT ,edHeight.getText().toString());
+	            cv.put(DbSQLLite.WEIGHT ,edWeight.getText().toString());
+	            cv.put(DbSQLLite.DASEASES ,edInfo.getText().toString());
+	            
+	            if(id == 999) {
+	            	db.insert(DbSQLLite.TABLE_NAME,null,cv);
+	            	Messenger.showMessege(this, 53);//saved
+	            }
+	            else
+	            {
+	            	db.update(DbSQLLite.TABLE_NAME, cv, DbSQLLite.USER_ID + " = ?",
+	                        new String[] { String.valueOf(id) });
+	            	Messenger.showMessege(this, 51);//saved
+	            }
+			} 
+	        finally {
+	        	db.close();
+			}
+    	}
+    	else
+    		Messenger.showMessege(this, 52);//empty fields
     }
     
     private void getFromDataBase(int ID) {

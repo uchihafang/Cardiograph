@@ -9,5 +9,7 @@
     <string name="title_activity_personal">Personal information</string>
     <string name="btnUserNameText">UserName</string>
     <string name="title_activity_user_list">Users List</string>
+    <string name="menu_personal">Personal Info</string>
+    <string name="menu_about">About</string>
 
 </resources>

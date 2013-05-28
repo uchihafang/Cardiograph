@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,6 +19,7 @@ public class MainActivity extends Activity {
 	private LineGraph lineGraph;
 	private static GraphicalView gViewGraph;
 	Thread threadGraphUpdater;
+	private int userID = 999;
 	
     //---methods---
     @Override
@@ -38,22 +40,37 @@ public class MainActivity extends Activity {
         //set Button name
         String strName = getString(R.string.btnUserNameText);
         DbSQLLite dbSQLLite = new DbSQLLite(this);
-        //try {
-        	strName = dbSQLLite.getUserName(getIntent().getExtras().getInt("Key_ID"));
+        try {
+        	userID = getIntent().getExtras().getInt("Key_ID");
+        	strName = dbSQLLite.getUserName(userID);
         	Button button = (Button) findViewById(R.id.btnUserName);
         	button.setText(strName);
-        //}catch(Exception e) {
+        }catch(Exception e) {
         	//
-        //}
+        }
         
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-    	Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-        startActivity(intent);
-        //getMenuInflater().inflate(R.menu.activity_main, menu);
+    	getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.personal: 
+            	Intent intentPrs = new Intent(MainActivity.this, PersonalActivity.class);
+            	intentPrs.putExtra("Key_ID",  userID);
+                startActivity(intentPrs);
+                return true;
+            case R.id.about:
+            	Intent intentAct = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intentAct);
+            	return true;
+            default:  return super.onOptionsItemSelected(item);
+        }
     }
     
     public void onBtnStartClick(View view) {
