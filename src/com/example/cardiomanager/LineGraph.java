@@ -28,13 +28,14 @@ public class LineGraph {
 
 		dataset.addSeries(timeSeries);
 
-		renderer.setColor(Color.BLACK);
+		renderer.setColor(Color.GREEN);
 		mRenderer.setBackgroundColor(Color.BLACK);
 		mRenderer.setAxesColor(Color.BLACK);
 		mRenderer.setMarginsColor(Color.WHITE);
 		mRenderer.setZoomButtonsVisible(true);
 
 		mRenderer.addSeriesRenderer(renderer);
+		startFilteringLine();
 	}
 
 	public GraphicalView getView(Context context) {
@@ -60,7 +61,7 @@ public class LineGraph {
 		dataset.addSeries(timeSerApr);
 		XYSeriesRenderer rendererApr = new XYSeriesRenderer();
 		renderer.setColor(Color.RED);
-		renderer.setLineWidth(5);
+		renderer.setLineWidth(3);
 		mRenderer.addSeriesRenderer(rendererApr);
 		timeSeries.add(1, 5);
 		timeSeries.add(5, 20);

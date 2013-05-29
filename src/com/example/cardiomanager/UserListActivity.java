@@ -26,6 +26,12 @@ public class UserListActivity extends Activity {
 		llBtnContainer = (LinearLayout) findViewById(R.id.llButtonContainer);
 		CreateButtonList();
 	}
+	
+	@Override
+	protected void onStart() {
+		
+		super.onStart();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
