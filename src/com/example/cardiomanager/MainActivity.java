@@ -2,9 +2,7 @@ package com.example.cardiomanager;
 
 import org.achartengine.GraphicalView;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -85,6 +83,10 @@ public class MainActivity extends Activity {
 		case R.id.menu_settings:
 			Intent intentSet = new Intent(MainActivity.this, Preferences.class);
 			startActivity(intentSet);
+			return true;
+		case R.id.send_data:
+			Intent intentSend = new Intent(MainActivity.this, DataSender.class);
+			startActivity(intentSend);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
