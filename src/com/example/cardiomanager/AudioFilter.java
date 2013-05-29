@@ -21,14 +21,23 @@ public class AudioFilter {
 	public synchronized void setBuffer(short sData[]) {
 		Data = sData;
 		int S = 0;
-		// for(int j = 0; j < bufferSize; j += 1000) {
+		
+		// infiltered
+		/*for(int j = 0; j < bufferSize; j += 100) {
+			S = Data[j];
+			lineGraph.addData(S);
+		}*/
+		
+		//aprocsimation
 		for (int i = 50; i < 70; i++) {
 			S += Data[i];
 		}
 		S /= 30 - 10;
 		Math.abs(S);
 		lineGraph.addData(S);
-		// }
+		
+		
+		
 	}
 
 	public synchronized short[] getBuffer() {

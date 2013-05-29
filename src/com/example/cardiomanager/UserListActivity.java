@@ -76,6 +76,8 @@ public class UserListActivity extends Activity {
 				llBtnContainer.addView(button, layoutParams);// add on Activity
 			} while (cursor.moveToNext());// while exists
 		}
+		cursor.close();
+		db.close();
 		Button button = new Button(this);// create button for addNew
 		button.setText("Add new User");// set Name //TODO add string to values
 		button.setLayoutParams(layoutParams);// set visual params
@@ -90,5 +92,6 @@ public class UserListActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
 	}
 }

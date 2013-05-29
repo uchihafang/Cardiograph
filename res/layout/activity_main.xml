@@ -21,7 +21,7 @@
         android:layout_margin="5dp"
         android:onClick="onBtnStopClick"
         android:enabled="false"
-        android:text="Stop" />
+        android:text="Pause" />
 
     <Button
         android:id="@+id/btnStart"

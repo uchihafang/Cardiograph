@@ -8,14 +8,18 @@ import android.media.MediaRecorder;
 
 public class MicrophoneRecoder
 {
-	private static int RECORDER_SAMPLERATE = 44100; //In device use samplerate to 44100 for better quality
+	private static int RECORDER_SAMPLERATE = 8000; //In device use samplerate to 44100 for better quality
 	private static int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
 	private static int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
+	private static int BUFER_SIZE_MULTIPLIFIER = 1; 
 	private AudioRecord recorder = null;
 	private Thread recordingThread = null;
 	private boolean isRecording = false;
 	private AudioFilter audioFilter;
 	private int bufferSize;
+	
+	int BufferElements2Rec = 1024; // want to play 2048 (2K) since 2 bytes we use only 1024
+	int BytesPerElement = 2; // 2 bytes in 16bit format
 
 	public MicrophoneRecoder(AudioFilter aF)
 	{
@@ -28,16 +32,13 @@ public class MicrophoneRecoder
 		
 		bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE,
 	            RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
-		aF.setBufferSize(bufferSize);	
+		aF.setBufferSize(BufferElements2Rec);	
 	}
 	
-	int BufferElements2Rec = 1024; // want to play 2048 (2K) since 2 bytes we use only 1024
-	int BytesPerElement = 2; // 2 bytes in 16bit format
-
 	public void startRecording() {
 	    recorder = new AudioRecord(MediaRecorder.AudioSource.MIC,
 	            RECORDER_SAMPLERATE, RECORDER_CHANNELS,
-	            RECORDER_AUDIO_ENCODING, bufferSize);//BufferElements2Rec * BytesPerElement);
+	            RECORDER_AUDIO_ENCODING, bufferSize*BUFER_SIZE_MULTIPLIFIER);//BufferElements2Rec * BytesPerElement);
 	    //audioFilter.showMassage(3);
 	    try {
 	    	recorder.startRecording();

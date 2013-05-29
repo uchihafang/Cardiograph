@@ -46,5 +46,25 @@ public class LineGraph {
 		timeSeries.add(counter, value);
 		counter++;
 	}
+	
+	public void clear() {
+		timeSeries.clear();
+		dataset.clear();
+		timeSeries = new TimeSeries("Line");
+		dataset.addSeries(timeSeries);
+		counter = 0;
+	}
+	
+	public void startFilteringLine() {
+		TimeSeries timeSerApr = new TimeSeries("Line");
+		dataset.addSeries(timeSerApr);
+		XYSeriesRenderer rendererApr = new XYSeriesRenderer();
+		renderer.setColor(Color.RED);
+		renderer.setLineWidth(5);
+		mRenderer.addSeriesRenderer(rendererApr);
+		timeSeries.add(1, 5);
+		timeSeries.add(5, 20);
+		timeSeries.add(100, -50);
+	}
 
 }

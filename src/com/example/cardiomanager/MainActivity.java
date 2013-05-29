@@ -94,40 +94,48 @@ public class MainActivity extends Activity {
 
 		}
 
-		/*
-		 * if(threadGraphUpdater == null) { threadGraphUpdater = new Thread() {
-		 * public void run() { while(true) { try { Thread.sleep(100);
-		 * gViewGraph.repaint();
-		 * 
-		 * }catch(InterruptedException e){
-		 * 
-		 * } } } }; } threadGraphUpdater.start();
-		 */
+		//if(line2)
+		lineGraph.startFilteringLine();
 
 		Button btn = (Button) findViewById(R.id.btnStart);
 		btn.setEnabled(false);
 		btn = (Button) findViewById(R.id.btnStop);
 		btn.setEnabled(true);
+		isOnPause = false;
 	}
 
+	boolean isOnPause = false;
+	
 	public void onBtnStopClick(View view) {
-		TextView text;
-		text = (TextView) findViewById(R.id.editView);
-		text.setText("Stoped");
-		try {
-			microphoneRecoder.stopRecording();
-		} catch (Exception e) {
-
+		if(isOnPause) {
+			TextView text;
+			text = (TextView) findViewById(R.id.editView);
+			text.setText("Cleared");
+			
+			lineGraph.clear();
+			
+			Button btn = (Button) findViewById(R.id.btnStop);
+			btn.setEnabled(false);
+			btn = (Button) findViewById(R.id.btnStart);
+			btn.setEnabled(true);
+			
+			isOnPause = false;
+		} else
+		{
+			TextView text;
+			text = (TextView) findViewById(R.id.editView);
+			text.setText("Stoped");
+			try {
+				microphoneRecoder.stopRecording();
+			} catch (Exception e) {
+	
+			}
+	
+			Button btn =  (Button) findViewById(R.id.btnStart);
+			btn.setEnabled(true);
+			
+			isOnPause = true;
 		}
-
-		/*
-		 * if(threadGraphUpdater.isAlive()) { threadGraphUpdater.stop(); }
-		 */
-
-		Button btn = (Button) findViewById(R.id.btnStop);
-		btn.setEnabled(false);
-		btn = (Button) findViewById(R.id.btnStart);
-		btn.setEnabled(true);
 	}
 
 	public void onBtnUserNameClick(View view) {

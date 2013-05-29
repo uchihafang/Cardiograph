@@ -22,10 +22,11 @@ public class Preferences extends PreferenceActivity {
 		SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
 		
-		if (prefs.contains("SampleRates")) {
+		//if (prefs.contains("SampleRates")) {
 			//MicrophoneRecoder.setRECORDER_SAMPLERATE(prefs.getInt(
 			//		"SampleRates", 8000));
-		}/*
+		//}
+		/*
 		if (prefs.contains("Channels")) {
 			MicrophoneRecoder.setRECORDER_CHANNELS(prefs.getBoolean("Channels",
 					false));
