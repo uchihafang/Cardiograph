@@ -8,7 +8,7 @@ import android.media.MediaRecorder;
 
 public class MicrophoneRecoder
 {
-	private static int RECORDER_SAMPLERATE = 8000; //In device use samplerate to 44100 for better quality
+	private static int RECORDER_SAMPLERATE = 44100; //In device use samplerate to 44100 for better quality
 	private static int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
 	private static int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
 	private AudioRecord recorder = null;

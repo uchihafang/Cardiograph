@@ -7,7 +7,7 @@
         android:id="@+id/textName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Name:"
+        android:text="@string/personal_ed_datebrth"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <EditText
@@ -27,14 +27,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
  		android:layout_below="@+id/edUserName"
-        android:text="Date of birth:"
+        android:text="@string/personal_ed_datebrth"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 	
     <EditText
         android:id="@+id/editDateBirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
- 		android:layout_toRightOf="@+id/textDate"
+        android:layout_alignLeft="@id/edUserName"
  		android:layout_below="@+id/edUserName"
         android:ems="10"
         android:inputType="date" />
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editDateBirth"
-        android:text="Height"
+        android:text="@string/personal_ed_height"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editDateBirth"
-        android:layout_toRightOf="@+id/textHeight"
+        android:layout_alignLeft="@id/edUserName"
         android:ems="10"
         android:inputType="number" />
 
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/edHeight"
-        android:text="Weight"
+        android:text="@string/personal_ed_width"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edHeight"
-        android:layout_toRightOf="@+id/textWeight"
+        android:layout_alignLeft="@id/edUserName"
         android:ems="10"
         android:inputType="number" />
 
@@ -80,17 +80,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edWeight"
         android:layout_alignParentLeft="true"
-        android:text="Diseases"
+        android:text="@string/personal_ed_desesses"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:id="@+id/edInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/edUserName"
         android:layout_below="@+id/edWeight"
-        android:layout_toRightOf="@+id/textInfo"
         android:ems="10"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:maxLines="4" />
     
     <Button
         android:id="@+id/btnDone"
@@ -99,7 +100,7 @@
         android:layout_below="@+id/edInfo"
         android:layout_margin="5dp"
         android:onClick="onBtnDoneClick"
-        android:text="Save" />
+        android:text="@string/personal_btn_save" />
     
 
 </RelativeLayout>

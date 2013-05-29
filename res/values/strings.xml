@@ -17,5 +17,11 @@
     <string name="preferenses_channels_title">Channel</string>
     <string name="preferenses_encoding_title">Encoding</string>
     <string name="preferenses_channels_text">Enable use stereo recording</string>
+    <string name="personal_btn_save">Save</string>
+    <string name="personal_ed_username">User Name:</string>
+    <string name="personal_ed_datebrth">Date of birth:</string>
+    <string name="personal_ed_height">Height:</string>
+    <string name="personal_ed_width">Width:</string>
+    <string name="personal_ed_desesses">Diseases</string>
 
 </resources>

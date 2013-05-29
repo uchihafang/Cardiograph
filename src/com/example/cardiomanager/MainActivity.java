@@ -37,6 +37,10 @@ public class MainActivity extends Activity {
 		audioFilter.setActivity(this);// TODO del, debug only
 		microphoneRecoder = new MicrophoneRecoder(audioFilter);
 
+	}
+
+	@Override
+	protected void onStart() {
 		// set Button name
 		String strName = getString(R.string.btnUserNameText);
 		DbSQLLite dbSQLLite = new DbSQLLite(this);
@@ -48,7 +52,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			//
 		}
-
+		super.onStart();
 	}
 
 	@Override
