@@ -33,5 +33,6 @@
     <string name="menu_send_data">Send</string>
     <string name="menu_arhive">Arhive</string>
     <string name="preferenses_category_advanced_title">Advanced</string>
+    <string name="version">0.5.1</string>
 
 </resources>

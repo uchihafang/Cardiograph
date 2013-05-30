@@ -24,7 +24,10 @@
     </PreferenceCategory>
     <PreferenceCategory
     			android:title="@string/preferenses_category_advanced_title">
-	    
+			    <Preference
+		                android:title="Custom Preference"
+		                android:summary="This works almost like a button"
+		                android:key="customPref" />
     </PreferenceCategory>
     
 </PreferenceScreen>
