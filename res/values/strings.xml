@@ -25,5 +25,6 @@
     <string name="personal_ed_desesses">Diseases</string>
     <string name="title_activity_data_sender">Send Data</string>
     <string name="menu_send_data">Send</string>
+    <string name="menu_arhive">Arhive</string>
 
 </resources>

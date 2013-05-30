@@ -103,9 +103,6 @@ public class MainActivity extends Activity {
 
 		}
 
-		//if(line2)
-		lineGraph.startFilteringLine();
-
 		Button btn = (Button) findViewById(R.id.btnStart);
 		btn.setEnabled(false);
 		btn = (Button) findViewById(R.id.btnStop);
@@ -140,6 +137,9 @@ public class MainActivity extends Activity {
 	
 			}
 	
+			//if(line2)
+			lineGraph.startFilteringLine();
+						
 			Button btn =  (Button) findViewById(R.id.btnStart);
 			btn.setEnabled(true);
 			

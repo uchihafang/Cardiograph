@@ -10,9 +10,11 @@ public class Messenger {
 	}
 
 	static void showMessege(Activity activity, String string) {
-		Toast toast = Toast.makeText(activity.getApplicationContext(), string,
-				Toast.LENGTH_SHORT);
-		toast.show();
+		if(activity != null) {
+			Toast toast = Toast.makeText(activity.getApplicationContext(), string,
+					Toast.LENGTH_SHORT);
+			toast.show();
+		}
 	}
 
 	static void showMessege(Activity activity, int messegeId) {
