@@ -3,7 +3,13 @@
     <string name="app_name">CardioManager</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">HardBeat</string>
-    <string name="about_text">Cardiograph in faze of creating.</string>
+    <string name="about_text">Cardiologic disease is the major cause of death in our time. 
+        						Along with the rapid development of computer technology, 
+        						such as increasing computing power with decreasing size, 
+        						allows to use a handheld device like mobile phone for 
+        						monitoring cardiac patients. The work includes research 
+        						in the field of processing cardiac signals handheld devices. 
+        						Tasked design, build and test software.</string>
     <string name="about_title">About</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_personal">Personal information</string>
@@ -26,5 +32,6 @@
     <string name="title_activity_data_sender">Send Data</string>
     <string name="menu_send_data">Send</string>
     <string name="menu_arhive">Arhive</string>
+    <string name="preferenses_category_advanced_title">Advanced</string>
 
 </resources>

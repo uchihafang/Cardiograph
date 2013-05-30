@@ -56,7 +56,7 @@ public class LineGraph {
 		gView.repaint();
 	}
 	
-	public void startFilteringLine() {
+	/*public void startFilteringLine() {
 		TimeSeries timeSerApr = new TimeSeries("Line");
 		dataset.addSeries(timeSerApr);
 		XYSeriesRenderer rendererApr = new XYSeriesRenderer();
@@ -66,6 +66,6 @@ public class LineGraph {
 		timeSerApr.add(1, 5);
 		timeSerApr.add(5, 20);
 		timeSerApr.add(100, -50);
-	}
+	}*/
 
 }

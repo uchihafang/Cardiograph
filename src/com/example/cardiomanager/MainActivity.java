@@ -33,7 +33,10 @@ public class MainActivity extends Activity {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.llGraph);
 		layout.addView(gViewGraph);
 		
-		
+		//create audio recoder
+		audioFilter = new AudioFilter(lineGraph);
+		audioFilter.setActivity(this);// TODO del, debug only
+		microphoneRecoder = new MicrophoneRecoder(audioFilter);
 		
 	}
 
@@ -50,12 +53,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			//
 		}
-		
-		//create audio recoder
-		audioFilter = new AudioFilter(lineGraph);
-		audioFilter.setActivity(this);// TODO del, debug only
-		microphoneRecoder = new MicrophoneRecoder(audioFilter);
-		
+			
 		
 		super.onStart();
 	}
@@ -138,7 +136,7 @@ public class MainActivity extends Activity {
 			}
 	
 			//if(line2)
-			lineGraph.startFilteringLine();
+			//lineGraph.startFilteringLine();
 						
 			Button btn =  (Button) findViewById(R.id.btnStart);
 			btn.setEnabled(true);

@@ -34,7 +34,6 @@ public class PersonalActivity extends Activity {
         id = getIntent().getExtras().getInt("Key_ID");
         if(id != 999)
           	getFromDataBase(id);
-        edHeight.setText(Integer.toString(id));
     }
 
     @Override

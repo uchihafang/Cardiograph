@@ -22,5 +22,9 @@
                         android:entries="@array/listEncoding"
                         android:entryValues="@array/listBoolean" />
     </PreferenceCategory>
+    <PreferenceCategory
+    			android:title="@string/preferenses_category_advanced_title">
+	    
+    </PreferenceCategory>
     
 </PreferenceScreen>
