@@ -1,13 +1,13 @@
-Cardiograph
+Mobile Cardiograph
 ===========
-Instalation:
-1) Clone
-2) Open in SDK(I was working in Eclips)
-3) Export .APK file
-4) Install on you Android devise
-...
-n) PROFIT
+Instalation:<br>
+1) Clone<br>
+2) Open in SDK(I was working in Eclips)<br>
+3) Export .APK file<br>
+4) Install on you Android devise<br>
+...<br>
+n) PROFIT<br>
 
 ===========
-Android Cardiograph
+Android Cardiograph<br>
 2013 (c) Pysmennyi Denys
